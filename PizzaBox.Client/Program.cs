@@ -14,6 +14,8 @@ namespace PizzaBox.Client
 {
   internal class Program
   {
+    private static readonly PizzaSingleton _pizzaSingleton = PizzaSingleton.Instance;
+    private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
     //Note that example code includes private static readonly List<Abstract class> _nameOfClass = new List<Ab>()
     // {
     // function calls go here to let us run example code.  
@@ -35,11 +37,18 @@ namespace PizzaBox.Client
       // sc.WriteLine(stores[entry]);
       Run();
     }
+    /*
+    private static void RunEF()
+    {
+      var context = new PizzaBoxContext();
+      var stores = context.Stores;
+      var customers = context.Customers;
+    } */
     private static void Run()
     {
       // /*
-      StoreSingleton ss = StoreSingleton.Instance;
-      StoreSingleton.stores = null;
+      //StoreSingleton ss = StoreSingleton.Instance;
+      //StoreSingleton.stores = null;
       //ss.stores = null;
       // */
       var order = new Order();
@@ -59,7 +68,7 @@ namespace PizzaBox.Client
     {
       var index = 0; //displays it on the screen, not needed
 
-      foreach (var item in PizzaSingleton.pizzas) //like a for loop but no incrementor
+      foreach (var item in _pizzaSingleton.Pizzas) //like a for loop but no incrementor
       {
         Console.WriteLine($"{++index} - {item}");
       }
@@ -68,7 +77,7 @@ namespace PizzaBox.Client
     {
       var index = 0;
 
-      foreach (var item in StoreSingleton.stores)
+      foreach (var item in _storeSingleton.Stores)
       {
         Console.WriteLine($"{++index} - {item}");
       }
@@ -76,7 +85,7 @@ namespace PizzaBox.Client
     private static APizza SelectPizza()
     {
       var input = int.Parse(Console.ReadLine());
-      var pizza = PizzaSingleton.pizzas[input - 1];
+      var pizza = _pizzaSingleton.Pizzas[input - 1];
 
       PrintOrder(pizza);
 
@@ -88,7 +97,7 @@ namespace PizzaBox.Client
 
       PrintPizzaList();
 
-      return StoreSingleton.Stores[input - 1];
+      return _storeSingleton.Stores[input - 1];
     }
   }
 }

@@ -6,18 +6,30 @@ namespace PizzaBox.Client.Singletons
 {
   public class StoreSingleton
   {
-    public static List<AStore> stores = new List<AStore>
-    {
-      new EastCoast(),
-      new WestCoast()
-    };
+    private static StoreSingleton _instance;
+    public List<AStore> Stores { get; }
     public static StoreSingleton Instance
     {
       get
       {
-        return new StoreSingleton();
+        if (_instance == null)
+        {
+          _instance = new StoreSingleton();
+        }
+        return _instance;
       }
     }
-    private StoreSingleton() { }
+    /// <summary>
+    /// 
+    /// </summary>
+    private StoreSingleton()
+    {
+
+      if (Stores == null)
+      {
+        //Stores = _fileRepository.ReadFromFile<List<AStore>>(_path);
+        Stores = new List<AStore>();
+      }
+    }
   }
 }
