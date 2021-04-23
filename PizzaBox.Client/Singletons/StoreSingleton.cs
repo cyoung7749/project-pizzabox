@@ -28,7 +28,11 @@ namespace PizzaBox.Client.Singletons
       if (Stores == null)
       {
         //Stores = _fileRepository.ReadFromFile<List<AStore>>(_path);
-        Stores = new List<AStore>();
+        Stores = new List<AStore>()
+        {
+          new EastCoast(),
+        new WestCoast()
+      };
       }
     }
   }

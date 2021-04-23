@@ -77,7 +77,7 @@ namespace PizzaBox.Client
     {
       var index = 0;
 
-      foreach (var item in _storeSingleton.Stores)
+      foreach (var item in _storeSingleton.Stores) //basically a counting for loop but it does everything for you
       {
         Console.WriteLine($"{++index} - {item}");
       }
