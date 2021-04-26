@@ -6,6 +6,7 @@ using PizzaBox.Domain.Models.Stores;
 using PizzaBox.Domain.Models;
 using PizzaBox.Domain.Models.Pizzas;
 using PizzaBox.Client.Singletons;
+using PizzaBox.Storing;
 
 
 //dotnet add PizzaBox.Client/PizzaBox.Client.csproj reference PizzaBox.Domain/PizzaBox.Domain.csproj 
@@ -35,14 +36,25 @@ namespace PizzaBox.Client
       // string input = sc.ReadLine();
       // int entry = int.Parse(input);
       // sc.WriteLine(stores[entry]);
+      
       Run();
+      //RunEF();
     }
-    /*
-    private static void RunEF()
+/*     private static void RunEF()
     {
       var context = new PizzaBoxContext();
       var stores = context.Stores;
       var customers = context.Customers;
+
+      foreach (var  item in stores)
+      {
+        System.Console.WriteLine(item);
+      }
+      foreach (var  item in customers)
+      {
+        System.Console.WriteLine(item);
+      }
+
     } */
     private static void Run()
     {
@@ -84,7 +96,11 @@ namespace PizzaBox.Client
     }
     private static APizza SelectPizza()
     {
-      var input = int.Parse(Console.ReadLine());
+/*       var valid = int.TryParse(Console.ReadLine(), out int input);
+      if (!valid)
+      {
+        return null;
+      } */
       var pizza = _pizzaSingleton.Pizzas[input - 1];
 
       PrintOrder(pizza);
@@ -93,8 +109,11 @@ namespace PizzaBox.Client
     }
     private static AStore SelectStore()
     {
-      var input = int.Parse(Console.ReadLine());
-
+      var input = int.TryParse(Console.ReadLine(), out int input);
+      if (!valid)
+      {
+        return null;
+      }
       PrintPizzaList();
 
       return _storeSingleton.Stores[input - 1];

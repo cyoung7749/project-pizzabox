@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzaBox.Storing;
 
 namespace PizzaBox.Storing.Migrations
 {
     [DbContext(typeof(PizzaBoxContext))]
-    partial class PizzaBoxContextModelSnapshot : ModelSnapshot
+    [Migration("20210426160126_add dbset store dataset for example RunEF")]
+    partial class adddbsetstoredatasetforexampleRunEF
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +44,7 @@ namespace PizzaBox.Storing.Migrations
 
                     b.HasIndex("SizeEntityId");
 
-                    b.ToTable("Pizzas");
+                    b.ToTable("APizza");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("APizza");
                 });
@@ -99,13 +101,6 @@ namespace PizzaBox.Storing.Migrations
                     b.HasKey("EntityId");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            EntityId = 1L,
-                            Name = "Mario Pardi"
-                        });
                 });
 
             modelBuilder.Entity("PizzaBox.Domain.Models.Order", b =>
@@ -150,7 +145,7 @@ namespace PizzaBox.Storing.Migrations
 
                     b.HasKey("EntityId");
 
-                    b.ToTable("Sizes");
+                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("PizzaBox.Domain.Models.Topping", b =>
@@ -188,13 +183,6 @@ namespace PizzaBox.Storing.Migrations
                     b.HasBaseType("PizzaBox.Domain.Abstracts.AStore");
 
                     b.HasDiscriminator().HasValue("EastCoast");
-
-                    b.HasData(
-                        new
-                        {
-                            EntityId = 1L,
-                            Name = "Mario's Pizzeria"
-                        });
                 });
 
             modelBuilder.Entity("PizzaBox.Domain.Models.Stores.WestCoast", b =>
@@ -202,13 +190,6 @@ namespace PizzaBox.Storing.Migrations
                     b.HasBaseType("PizzaBox.Domain.Abstracts.AStore");
 
                     b.HasDiscriminator().HasValue("WestCoast");
-
-                    b.HasData(
-                        new
-                        {
-                            EntityId = 2L,
-                            Name = "Bowser's Castle"
-                        });
                 });
 
             modelBuilder.Entity("PizzaBox.Domain.Abstracts.APizza", b =>

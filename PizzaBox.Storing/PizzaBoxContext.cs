@@ -10,10 +10,11 @@ namespace PizzaBox.Storing
   public class PizzaBoxContext : DbContext
   {
     private readonly IConfiguration _configuration;
-    //public DbSet<AStore> Stores { get; set; }
-    //public DbSet<APizza> Pizzas { get; set; }
+    public DbSet<AStore> Stores { get; set; }
+    public DbSet<APizza> Pizzas { get; set; }
     public DbSet<Customer> Customers { get; set; }
-    //public DbSet<Size> Sizes { get; set; }
+    public DbSet<Size> Sizes { get; set; }
+    
     public PizzaBoxContext() //dependency injection way: (IConfiguration configuration)
     { //reading config way 
       _configuration = new ConfigurationBuilder().AddUserSecrets<PizzaBoxContext>().Build();
@@ -42,18 +43,17 @@ namespace PizzaBox.Storing
       private void OnDataSeeding(ModelBuilder builder)
       {
         builder.Entity<EastCoast>().HasData(new EastCoast[] //params
-        {  new EastCoast()
+        {  new EastCoast() { EntityId = 1, Name = "Mario's Pizzeria"}
 
         });
         builder.Entity<WestCoast>().HasData(new WestCoast[]
-        {  new WestCoast()
+        {  new WestCoast()  { EntityId = 2, Name = "Bowser's Castle"}
         });
-        //builfder.
-      
-/*       builder.Entity<Customer>().HasData(new Customer[]
+       
+       builder.Entity<Customer>().HasData(new Customer[]
       {
         new Customer() { EntityId = 1, Name = "Mario Pardi" }
-      }); */
+      }); 
       
     }
   }

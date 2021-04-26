@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzaBox.Storing;
 
 namespace PizzaBox.Storing.Migrations
 {
     [DbContext(typeof(PizzaBoxContext))]
-    partial class PizzaBoxContextModelSnapshot : ModelSnapshot
+    [Migration("20210426160645_add dbset store dataset for example RunEF2 not fixed")]
+    partial class adddbsetstoredatasetforexampleRunEF2notfixed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +44,7 @@ namespace PizzaBox.Storing.Migrations
 
                     b.HasIndex("SizeEntityId");
 
-                    b.ToTable("Pizzas");
+                    b.ToTable("APizza");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("APizza");
                 });
@@ -150,7 +152,7 @@ namespace PizzaBox.Storing.Migrations
 
                     b.HasKey("EntityId");
 
-                    b.ToTable("Sizes");
+                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("PizzaBox.Domain.Models.Topping", b =>
