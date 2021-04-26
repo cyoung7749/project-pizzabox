@@ -13,8 +13,10 @@ namespace PizzaBox.Storing
     public DbSet<AStore> Stores { get; set; }
     public DbSet<APizza> Pizzas { get; set; }
     public DbSet<Customer> Customers { get; set; }
+  //public DbSet<Orders> Orders { get; set; } for repo design pattern
+
     public DbSet<Size> Sizes { get; set; }
-    
+
     public PizzaBoxContext() //dependency injection way: (IConfiguration configuration)
     { //reading config way 
       _configuration = new ConfigurationBuilder().AddUserSecrets<PizzaBoxContext>().Build();
@@ -42,19 +44,20 @@ namespace PizzaBox.Storing
       }
       private void OnDataSeeding(ModelBuilder builder)
       {
-        builder.Entity<EastCoast>().HasData(new EastCoast[] //params
+       builder.Entity<EastCoast>().HasData(new EastCoast[] //params
         {  new EastCoast() { EntityId = 1, Name = "Mario's Pizzeria"}
 
         });
-        builder.Entity<WestCoast>().HasData(new WestCoast[]
+      builder.Entity<WestCoast>().HasData(new WestCoast[]
         {  new WestCoast()  { EntityId = 2, Name = "Bowser's Castle"}
-        });
+        }); 
        
-       builder.Entity<Customer>().HasData(new Customer[]
+      builder.Entity<Customer>().HasData(new Customer[]
       {
         new Customer() { EntityId = 1, Name = "Mario Pardi" }
       }); 
       
+    
     }
   }
 }

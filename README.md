@@ -103,3 +103,12 @@ The application is centered around the interaction of 4 main objects:
   - able to save a placed order including customer info, pizza info, store info
 
 > the goal is to try to complete as many reqs as you can in the time alloted. :)
+
+## notes
+- Repository design pattern 
+- CRUD
+- CREATE, READ, UPDATE, DELETE
+- will exist in the repository or in the singleton
+- no DbSet yet.  
+- need to link storing back to domain
+- creating a readonly to init in the program.cs

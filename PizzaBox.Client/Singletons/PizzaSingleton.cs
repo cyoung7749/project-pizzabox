@@ -40,6 +40,7 @@ namespace PizzaBox.Client.Singletons
       // _context.Pizzas.AddRange(_fileRepository.ReadFromFile<List<APizza>>(_path));
       var cp = new CustomPizza();
       cp.Size = _context.Sizes.FirstOrDefault(s => s.Name == "Medium");
+      //cp.Crust = _context.Crust.FirstOrDefault(s => s.Name == "Original");
 
       _context.Add(cp);
       _context.SaveChanges();

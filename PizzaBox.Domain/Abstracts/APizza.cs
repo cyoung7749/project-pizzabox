@@ -7,7 +7,7 @@ using PizzaBox.Domain.Models.Pizzas;
 namespace PizzaBox.Domain.Abstracts
 {
 
-  [XmlInclude(typeof(CustomPizza))]
+  //[XmlInclude(typeof(CustomPizza))]
   //[XmlInclude(typeof(MeatPizza))]
   //[XmlInclude(typeof(VeggiePizza))]
   public abstract class APizza : AModel
@@ -17,9 +17,9 @@ namespace PizzaBox.Domain.Abstracts
     //public long SizeEntityId { get; set; }
     public List<Topping> Toppings { get; set; }
 
-    public APizza()
+    protected APizza()
     {
-      // Factory();
+      Factory();
     }
     protected virtual void Factory()
     {
@@ -28,11 +28,9 @@ namespace PizzaBox.Domain.Abstracts
       AddToppings();
     }
 
-    protected abstract void AddCrust();
-
-    protected abstract void AddSize();
-
-    protected abstract void AddToppings();
+    public abstract void AddCrust(Crust crust = null);
+    public abstract void AddSize(Size size = null);
+    public abstract void AddToppings(params Topping[] toppings);
 
     public override string ToString()
     {

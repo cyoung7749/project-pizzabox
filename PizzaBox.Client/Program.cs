@@ -84,7 +84,7 @@ namespace PizzaBox.Client
       {
         Console.WriteLine($"{++index} - {item}");
       }
-    }
+    } 
     private static void PrintStoreList()
     {
       var index = 0;
@@ -94,22 +94,22 @@ namespace PizzaBox.Client
         Console.WriteLine($"{++index} - {item}");
       }
     }
-    private static APizza SelectPizza()
+     private static APizza SelectPizza()
     {
-/*       var valid = int.TryParse(Console.ReadLine(), out int input);
+       var valid = int.TryParse(Console.ReadLine(), out int input);
       if (!valid)
       {
         return null;
-      } */
+      } 
       var pizza = _pizzaSingleton.Pizzas[input - 1];
 
       PrintOrder(pizza);
 
       return pizza;
-    }
+    } 
     private static AStore SelectStore()
     {
-      var input = int.TryParse(Console.ReadLine(), out int input);
+      var valid = int.TryParse(Console.ReadLine(), out int input);
       if (!valid)
       {
         return null;
