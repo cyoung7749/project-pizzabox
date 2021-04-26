@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>7ff3f501-d7f3-4f86-8bad-1189d5dc021b</UserSecretsId>
-  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PizzaBox.Domain\PizzaBox.Domain.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="microsoft.entityframeworkcore.design" Version="5.0.5">
@@ -11,10 +10,12 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="5.0.5" />
+    <PackageReference Include="microsoft.extensions.configuration.usersecrets" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\PizzaBox.Domain\PizzaBox.Domain.csproj" />
-  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>641b54a7-91a8-4996-8ac6-b5cd70ef7806</UserSecretsId>
+  </PropertyGroup>
 
 </Project>
