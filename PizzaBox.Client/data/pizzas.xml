@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAPizza xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <APizza xsi:type="CustomPizza">
+    <Size>
+      <Name>Medium</Name>
+    </Size>
+    <SizeEntityId>1</SizeEntityId>
+    <Crust>
+      <Name>Original</Name>
+      </Crust>
+     <CrustEntityId>1</CrustEntityId>
+  </APizza>
+</ArrayOfAPizza>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzaBox.Storing;
 
 namespace PizzaBox.Storing.Migrations
 {
     [DbContext(typeof(PizzaBoxContext))]
-    partial class PizzaBoxContextModelSnapshot : ModelSnapshot
+    [Migration("20210427023113_custom pizza pls 1")]
+    partial class custompizzapls1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,7 +106,7 @@ namespace PizzaBox.Storing.Migrations
                         new
                         {
                             EntityId = 1L,
-                            Name = "Mario Pardi"
+                            Name = "Mario Pardi 2"
                         });
                 });
 
@@ -181,6 +183,12 @@ namespace PizzaBox.Storing.Migrations
                     b.HasBaseType("PizzaBox.Domain.Abstracts.APizza");
 
                     b.HasDiscriminator().HasValue("CustomPizza");
+
+                    b.HasData(
+                        new
+                        {
+                            EntityId = 1L
+                        });
                 });
 
             modelBuilder.Entity("PizzaBox.Domain.Models.Stores.EastCoast", b =>

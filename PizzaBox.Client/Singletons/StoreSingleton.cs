@@ -37,17 +37,7 @@ namespace PizzaBox.Client.Singletons
 
       return _instance;
     }
-    public static StoreSingleton Instance(PizzaBoxContext context)
-    {
-        if (_instance == null)
-        {
-          _instance = new StoreSingleton();
-        }
-        return _instance;
-    }
-    /// <summary>
-    /// 
-    /// </summary>
+
     public IEnumerable<AStore> ViewOrders(AStore store)
     {
       // lambda - lINQ (linq to objects)

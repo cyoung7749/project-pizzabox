@@ -13,19 +13,19 @@ namespace PizzaBox.Storing.Repositories
     /// </summary>
     /// <returns></returns>
     public T ReadFromFile<T>(string path) where T : class
+      //{
+      //try
     {
-      try
-      {
-        var reader = new StreamReader(path);
-        var xml = new XmlSerializer(typeof(T));
+      var reader = new StreamReader(path);
+      var xml = new XmlSerializer(typeof(T));
 
-        return xml.Deserialize(reader) as T;
-      }
-      catch
-      {
-        return null;
-      }
+      return xml.Deserialize(reader) as T;
     }
+    /*       catch
+          {
+            return null;
+          } */
+    //}
 
     /// <summary>
     /// 

@@ -2,10 +2,10 @@
 using System;
 using System.Linq;
 using sc = System.Console; // only do this when you are being clear on the alias 
-using PizzaBox.Domain.Abstracts;
 using PizzaBox.Domain.Models.Stores;
 using PizzaBox.Domain.Models;
 using PizzaBox.Domain.Models.Pizzas;
+using PizzaBox.Domain.Abstracts;
 using PizzaBox.Client.Singletons;
 using PizzaBox.Storing;
 using PizzaBox.Storing.Repositories;
@@ -40,26 +40,26 @@ namespace PizzaBox.Client
       // string input = sc.ReadLine();
       // int entry = int.Parse(input);
       // sc.WriteLine(stores[entry]);
-      
+
       Run();
       //RunEF();
     }
-/*     private static void RunEF()
-    {
-      var context = new PizzaBoxContext();
-      var stores = context.Stores;
-      var customers = context.Customers;
+    /*     private static void RunEF()
+        {
+          var context = new PizzaBoxContext();
+          var stores = context.Stores;
+          var customers = context.Customers;
 
-      foreach (var  item in stores)
-      {
-        System.Console.WriteLine(item);
-      }
-      foreach (var  item in customers)
-      {
-        System.Console.WriteLine(item);
-      }
+          foreach (var  item in stores)
+          {
+            System.Console.WriteLine(item);
+          }
+          foreach (var  item in customers)
+          {
+            System.Console.WriteLine(item);
+          }
 
-    } */
+        } */
     private static void Run()
     {
       // /*
@@ -72,16 +72,20 @@ namespace PizzaBox.Client
       Console.WriteLine("Welcome to PizzaBox");
       PrintListToScreen(_customerSingleton.Customers);
 
-      //order.Customer = SelectCustomer();
+      order.Customer = SelectCustomer();
       order.Store = SelectStore();
       order.Pizza = SelectPizza();
 
       //STORE THE ORDER HERE
       _orderRepository.Create(order);
       var orders = _context.Orders.Where(o => o.Customer.Name == order.Customer.Name);
+      //STORE THE ORDER HERE 
 
       PrintListToScreen(orders);
-      //STORE THE ORDER HERE 
+    }
+    private static void SelectOrder()
+    {
+
     }
     private static void PrintOrder(APizza pizza)
     {
@@ -96,7 +100,7 @@ namespace PizzaBox.Client
       {
         Console.WriteLine($"{++index} - {item}");
       }
-    } 
+    }
     private static void PrintStoreList()
     {
       var index = 0;
@@ -107,7 +111,7 @@ namespace PizzaBox.Client
         Console.WriteLine($"{++index} - {item}");
       }
     }
-        private static void PrintListToScreen(IEnumerable<object> items)
+    private static void PrintListToScreen(IEnumerable<object> items)
     {
       var index = 0;
 
@@ -132,18 +136,18 @@ namespace PizzaBox.Client
 
       return customer;
     }
-     private static APizza SelectPizza()
+    private static APizza SelectPizza()
     {
-       var valid = int.TryParse(Console.ReadLine(), out int input);
+      var valid = int.TryParse(Console.ReadLine(), out int input);
       if (!valid)
       {
         return null;
-      } 
+      }
       var pizza = _pizzaSingleton.Pizzas[input - 1];
       PrintOrder(pizza);
 
       return pizza;
-    } 
+    }
     private static AStore SelectStore()
     {
       var valid = int.TryParse(Console.ReadLine(), out int input);
