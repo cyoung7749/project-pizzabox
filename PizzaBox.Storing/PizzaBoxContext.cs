@@ -10,6 +10,7 @@ namespace PizzaBox.Storing
   public class PizzaBoxContext : DbContext
   {
     private readonly IConfiguration _configuration;
+    
     public DbSet<AStore> Stores { get; set; }
     public DbSet<APizza> Pizzas { get; set; }
     public DbSet<Customer> Customers { get; set; }

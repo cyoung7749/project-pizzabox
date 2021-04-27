@@ -12,41 +12,42 @@ namespace PizzaBox.Client.Singletons
   {
     //private const string _path = @"data/stores.xml";
     //private readonly FileRepository _fileRepository = new FileRepository();
-    private readonly PizzaBoxContext _context = new PizzaBoxContext();
+    private readonly PizzaBoxContext _context;
     private static StoreSingleton _instance;
 
     public List<AStore> Stores { get; }
     
-    public static StoreSingleton Instance
+    private StoreSingleton(PizzaBoxContext context)
     {
-      get
+      _context = context;
+      if (Stores == null)
       {
+        //_context.Stores.AddRange(_fileRepository.ReadFromFile<List<AStore>>(_path));
+        //_context.SaveChanges();
+
+        Stores = _context.Stores.ToList();
+      }
+    }
+    public static StoreSingleton Instance(PizzaBoxContext context)
+    {
+      if (_instance == null)
+      {
+        _instance = new StoreSingleton(context);
+      }
+
+      return _instance;
+    }
+    public static StoreSingleton Instance(PizzaBoxContext context)
+    {
         if (_instance == null)
         {
           _instance = new StoreSingleton();
         }
         return _instance;
-      }
     }
     /// <summary>
     /// 
     /// </summary>
-    private StoreSingleton()
-    {
-
-      if (Stores == null)
-      {
-        //_context.Stores.AddRange(_fileRepository.ReadFromFile<List<AStore>>(_path));
-        _context.SaveChanges();
-/*         Stores = new List<AStore>()
-        {
-          new EastCoast(),
-        new WestCoast()
-      }; */
-        Stores = _context.Stores.ToList();
-      }
-    }
-
     public IEnumerable<AStore> ViewOrders(AStore store)
     {
       // lambda - lINQ (linq to objects)
@@ -62,10 +63,10 @@ namespace PizzaBox.Client.Singletons
 
       // sql - LINQ (ling to sql)
       // EF Lazy Loading
-/*       var orders2 = from r in _context.Stores
+      var orders2 = from r in _context.Stores
                       //join ro in _context.Orders on r.EntityId == ro.StoreEntityId
                     where r.Name == store.Name
-                    select r; */
+                    select r;
 
       return orders.ToList();
     }
