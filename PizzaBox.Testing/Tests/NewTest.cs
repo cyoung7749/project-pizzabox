@@ -24,7 +24,8 @@ namespace PizzaBox.Testing.NewTest
     public static IEnumerable<object[]> pizzas = new List<object[]>()
     {
             new object[] { new NewYorkPizza()},
-            new object[] { new CustomPizza()}
+            new object[] { new CustomPizza()},
+            new object[] { new ChicagoPizza()}
     };
     //object is variable without datatype 
 
@@ -33,7 +34,16 @@ namespace PizzaBox.Testing.NewTest
     public void Test_PizzaName(APizza pizza)
     {
       Assert.NotNull(pizza);
-      //Assert.Equal(pizza.Crust.Name, pizza.ToString());
+      // Assert.NotNull(pizza.EntityId);
+
+      //Assert.NotEqual(pizza.EntityId, TestId)
+      //Assert.NotNull(pizza.Size);
+      //Assert.NotNull(pizza.Crust);
+      Assert.NotNull(pizza.Toppings);
+      //ssert.NotNull(pizza.EntityId);
+      Assert.Equal(pizza.Crust.Name, pizza.Crust.ToString());
+      Assert.Equal(pizza.Size.Name, pizza.Size.ToString());
+
     }
     public static IEnumerable<object[]> crust = new List<object[]>()
     {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzaBox.Storing;
 
 namespace PizzaBox.Storing.Migrations
 {
     [DbContext(typeof(PizzaBoxContext))]
-    partial class PizzaBoxContextModelSnapshot : ModelSnapshot
+    [Migration("20210427152001_sizecrust many to one")]
+    partial class sizecrustmanytoone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,6 +31,9 @@ namespace PizzaBox.Storing.Migrations
                     b.Property<long?>("CrustEntityId")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("CrustEntityId1")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -36,11 +41,18 @@ namespace PizzaBox.Storing.Migrations
                     b.Property<long?>("SizeEntityId")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("SizeEntityId1")
+                        .HasColumnType("bigint");
+
                     b.HasKey("EntityId");
 
                     b.HasIndex("CrustEntityId");
 
+                    b.HasIndex("CrustEntityId1");
+
                     b.HasIndex("SizeEntityId");
+
+                    b.HasIndex("SizeEntityId1");
 
                     b.ToTable("Pizzas");
 
@@ -236,9 +248,17 @@ namespace PizzaBox.Storing.Migrations
                         .WithMany()
                         .HasForeignKey("CrustEntityId");
 
+                    b.HasOne("PizzaBox.Domain.Models.Crust", null)
+                        .WithMany()
+                        .HasForeignKey("CrustEntityId1");
+
                     b.HasOne("PizzaBox.Domain.Models.Size", "Size")
                         .WithMany()
                         .HasForeignKey("SizeEntityId");
+
+                    b.HasOne("PizzaBox.Domain.Models.Size", null)
+                        .WithMany()
+                        .HasForeignKey("SizeEntityId1");
 
                     b.Navigation("Crust");
 

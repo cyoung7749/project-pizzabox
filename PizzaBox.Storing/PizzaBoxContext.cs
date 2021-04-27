@@ -31,11 +31,16 @@ namespace PizzaBox.Storing
     protected override void OnModelCreating(ModelBuilder builder)
     {
       builder.Entity<AStore>().HasKey(e => e.EntityId);
+      builder.Entity<AStore>().HasMany<Order>(s => s.Orders).WithOne(o => o.Store);
       builder.Entity<EastCoast>().HasBaseType<AStore>();
       builder.Entity<WestCoast>().HasBaseType<AStore>();
 
       builder.Entity<APizza>().HasKey(e => e.EntityId); //these are subject to change 
+      builder.Entity<APizza>().HasMany<Order>().WithOne(o => o.Pizza);
       builder.Entity<CustomPizza>().HasBaseType<APizza>();
+      builder.Entity<NewYorkPizza>().HasBaseType<APizza>();
+      builder.Entity<ChicagoPizza>().HasBaseType<APizza>();
+
       builder.Entity<Size>().HasMany<APizza>().WithOne(p => p.Size);
       builder.Entity<Crust>().HasMany<APizza>().WithOne(p => p.Crust);
       //builder.Entity<MORE PRESETS>().HasBaseType<APizza>();
@@ -48,8 +53,8 @@ namespace PizzaBox.Storing
       builder.Entity<Customer>().HasKey(e => e.EntityId);
       builder.Entity<Customer>().HasMany<Order>().WithOne(o => o.Customer);
 
-      builder.Entity<AStore>().HasMany<Order>(s => s.Orders).WithOne(o => o.Store);
-      builder.Entity<APizza>().HasMany<Order>().WithOne(o => o.Pizza);
+
+      //builder.Entity<Topping>().HasMany<APizza>().WithMany();
 
       OnDataSeeding(builder);
     }
@@ -66,6 +71,10 @@ namespace PizzaBox.Storing
       builder.Entity<Customer>().HasData(new Customer[]
       {
         new Customer() { EntityId = 1, Name = "Mario Pardi" }
+      });
+      builder.Entity<Customer>().HasData(new Customer[]
+      {
+        new Customer() { EntityId = 2, Name = "Mario Kart" }
       });
 
       /*       builder.Entity<Crust>().HasData(new Crust[]

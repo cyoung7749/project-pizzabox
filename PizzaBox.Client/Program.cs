@@ -83,10 +83,6 @@ namespace PizzaBox.Client
 
       PrintListToScreen(orders);
     }
-    private static void SelectOrder()
-    {
-
-    }
     private static void PrintOrder(APizza pizza)
     {
       Console.WriteLine($"Your order is {pizza}");
