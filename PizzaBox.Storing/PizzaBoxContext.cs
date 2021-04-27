@@ -13,9 +13,10 @@ namespace PizzaBox.Storing
     public DbSet<AStore> Stores { get; set; }
     public DbSet<APizza> Pizzas { get; set; }
     public DbSet<Customer> Customers { get; set; }
-  //public DbSet<Orders> Orders { get; set; } for repo design pattern
+    public DbSet<Order> Orders { get; set; } //for repo design pattern
 
     public DbSet<Size> Sizes { get; set; }
+    //public DbSet<Crust> Crust { get; set; }
 
     public PizzaBoxContext() //dependency injection way: (IConfiguration configuration)
     { //reading config way 
@@ -28,8 +29,8 @@ namespace PizzaBox.Storing
     protected override void OnModelCreating(ModelBuilder builder)
     {
       builder.Entity<AStore>().HasKey(e => e.EntityId);
-      builder.Entity<WestCoast>().HasBaseType<AStore>();
       builder.Entity<EastCoast>().HasBaseType<AStore>();
+      builder.Entity<WestCoast>().HasBaseType<AStore>();
 
       builder.Entity<APizza>().HasKey(e => e.EntityId); //these are subject to change 
       builder.Entity<CustomPizza>().HasBaseType<APizza>();
@@ -41,23 +42,26 @@ namespace PizzaBox.Storing
 
       builder.Entity<Customer>().HasKey(e => e.EntityId);
       OnDataSeeding(builder);
-      }
+       }
       private void OnDataSeeding(ModelBuilder builder)
       {
-       builder.Entity<EastCoast>().HasData(new EastCoast[] //params
-        {  new EastCoast() { EntityId = 1, Name = "Mario's Pizzeria"}
+        builder.Entity<EastCoast>().HasData(new EastCoast[] //params
+        {  new EastCoast() { EntityId = 1, Name = "Mario Galaxy"}
 
         });
       builder.Entity<WestCoast>().HasData(new WestCoast[]
-        {  new WestCoast()  { EntityId = 2, Name = "Bowser's Castle"}
-        }); 
+        {  new WestCoast()  { EntityId = 2, Name = "Luigi's Haunted Mansion"}
+        });  
        
       builder.Entity<Customer>().HasData(new Customer[]
       {
-        new Customer() { EntityId = 1, Name = "Mario Pardi" }
-      }); 
+        new Customer() { EntityId = 1, Name = "Mario Pardi 2" }
+      });
       
-    
+/*       builder.Entity<CustomPizza>().HasData(new CustomPizza[]
+      {
+        new CustomPizza() { Crust = null, Size = null, }
+      }); */
     }
   }
 }

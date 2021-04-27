@@ -2,7 +2,7 @@
 
 namespace PizzaBox.Storing.Migrations
 {
-    public partial class testastore1 : Migration
+    public partial class removeseeddataattempt2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

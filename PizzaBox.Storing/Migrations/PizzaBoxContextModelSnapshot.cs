@@ -104,7 +104,7 @@ namespace PizzaBox.Storing.Migrations
                         new
                         {
                             EntityId = 1L,
-                            Name = "Mario Pardi"
+                            Name = "Mario Pardi 2"
                         });
                 });
 
@@ -193,7 +193,7 @@ namespace PizzaBox.Storing.Migrations
                         new
                         {
                             EntityId = 1L,
-                            Name = "Mario's Pizzeria"
+                            Name = "Mario Galaxy"
                         });
                 });
 
@@ -207,7 +207,7 @@ namespace PizzaBox.Storing.Migrations
                         new
                         {
                             EntityId = 2L,
-                            Name = "Bowser's Castle"
+                            Name = "Luigi's Haunted Mansion"
                         });
                 });
 

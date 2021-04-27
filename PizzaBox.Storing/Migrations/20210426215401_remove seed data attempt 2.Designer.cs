@@ -10,8 +10,8 @@ using PizzaBox.Storing;
 namespace PizzaBox.Storing.Migrations
 {
     [DbContext(typeof(PizzaBoxContext))]
-    [Migration("20210426160832_add dbset store dataset for example RunEF3 not fixed")]
-    partial class adddbsetstoredatasetforexampleRunEF3notfixed
+    [Migration("20210426215401_remove seed data attempt 2")]
+    partial class removeseeddataattempt2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -106,7 +106,7 @@ namespace PizzaBox.Storing.Migrations
                         new
                         {
                             EntityId = 1L,
-                            Name = "Mario Pardi"
+                            Name = "Mario Pardi 2"
                         });
                 });
 
@@ -195,7 +195,7 @@ namespace PizzaBox.Storing.Migrations
                         new
                         {
                             EntityId = 1L,
-                            Name = "Mario's Pizzeria"
+                            Name = "Mario Galaxy"
                         });
                 });
 
@@ -209,7 +209,7 @@ namespace PizzaBox.Storing.Migrations
                         new
                         {
                             EntityId = 2L,
-                            Name = "Bowser's Castle"
+                            Name = "Luigi's Haunted Mansion"
                         });
                 });
 

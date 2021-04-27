@@ -2,7 +2,7 @@
 
 namespace PizzaBox.Storing.Migrations
 {
-    public partial class adddbsetstoredatasetforexampleRunEF3notfixed : Migration
+    public partial class removeseeddataastorebroken : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,6 +19,10 @@ namespace PizzaBox.Storing.Migrations
                 table: "Order");
 
             migrationBuilder.DropForeignKey(
+                name: "FK_Order_AStore_StoreEntityId",
+                table: "Order");
+
+            migrationBuilder.DropForeignKey(
                 name: "FK_Topping_APizza_APizzaEntityId",
                 table: "Topping");
 
@@ -27,12 +31,20 @@ namespace PizzaBox.Storing.Migrations
                 table: "Size");
 
             migrationBuilder.DropPrimaryKey(
+                name: "PK_AStore",
+                table: "AStore");
+
+            migrationBuilder.DropPrimaryKey(
                 name: "PK_APizza",
                 table: "APizza");
 
             migrationBuilder.RenameTable(
                 name: "Size",
                 newName: "Sizes");
+
+            migrationBuilder.RenameTable(
+                name: "AStore",
+                newName: "Stores");
 
             migrationBuilder.RenameTable(
                 name: "APizza",
@@ -54,15 +66,47 @@ namespace PizzaBox.Storing.Migrations
                 column: "EntityId");
 
             migrationBuilder.AddPrimaryKey(
+                name: "PK_Stores",
+                table: "Stores",
+                column: "EntityId");
+
+            migrationBuilder.AddPrimaryKey(
                 name: "PK_Pizzas",
                 table: "Pizzas",
                 column: "EntityId");
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "EntityId", "Name" },
+                values: new object[] { 1L, "Mario Pardi 2" });
+
+            migrationBuilder.UpdateData(
+                table: "Stores",
+                keyColumn: "EntityId",
+                keyValue: 1L,
+                column: "Name",
+                value: "Mario Galaxy");
+
+            migrationBuilder.UpdateData(
+                table: "Stores",
+                keyColumn: "EntityId",
+                keyValue: 2L,
+                column: "Name",
+                value: "Luigi's Haunted Mansion");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Order_Pizzas_PizzaEntityId",
                 table: "Order",
                 column: "PizzaEntityId",
                 principalTable: "Pizzas",
+                principalColumn: "EntityId",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Order_Stores_StoreEntityId",
+                table: "Order",
+                column: "StoreEntityId",
+                principalTable: "Stores",
                 principalColumn: "EntityId",
                 onDelete: ReferentialAction.Restrict);
 
@@ -98,6 +142,10 @@ namespace PizzaBox.Storing.Migrations
                 table: "Order");
 
             migrationBuilder.DropForeignKey(
+                name: "FK_Order_Stores_StoreEntityId",
+                table: "Order");
+
+            migrationBuilder.DropForeignKey(
                 name: "FK_Pizzas_Crust_CrustEntityId",
                 table: "Pizzas");
 
@@ -110,12 +158,25 @@ namespace PizzaBox.Storing.Migrations
                 table: "Topping");
 
             migrationBuilder.DropPrimaryKey(
+                name: "PK_Stores",
+                table: "Stores");
+
+            migrationBuilder.DropPrimaryKey(
                 name: "PK_Sizes",
                 table: "Sizes");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Pizzas",
                 table: "Pizzas");
+
+            migrationBuilder.DeleteData(
+                table: "Customers",
+                keyColumn: "EntityId",
+                keyValue: 1L);
+
+            migrationBuilder.RenameTable(
+                name: "Stores",
+                newName: "AStore");
 
             migrationBuilder.RenameTable(
                 name: "Sizes",
@@ -136,6 +197,11 @@ namespace PizzaBox.Storing.Migrations
                 newName: "IX_APizza_CrustEntityId");
 
             migrationBuilder.AddPrimaryKey(
+                name: "PK_AStore",
+                table: "AStore",
+                column: "EntityId");
+
+            migrationBuilder.AddPrimaryKey(
                 name: "PK_Size",
                 table: "Size",
                 column: "EntityId");
@@ -144,6 +210,20 @@ namespace PizzaBox.Storing.Migrations
                 name: "PK_APizza",
                 table: "APizza",
                 column: "EntityId");
+
+            migrationBuilder.UpdateData(
+                table: "AStore",
+                keyColumn: "EntityId",
+                keyValue: 1L,
+                column: "Name",
+                value: "Mario's Pizzeria");
+
+            migrationBuilder.UpdateData(
+                table: "AStore",
+                keyColumn: "EntityId",
+                keyValue: 2L,
+                column: "Name",
+                value: "Bowser's Castle");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_APizza_Crust_CrustEntityId",
@@ -166,6 +246,14 @@ namespace PizzaBox.Storing.Migrations
                 table: "Order",
                 column: "PizzaEntityId",
                 principalTable: "APizza",
+                principalColumn: "EntityId",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Order_AStore_StoreEntityId",
+                table: "Order",
+                column: "StoreEntityId",
+                principalTable: "AStore",
                 principalColumn: "EntityId",
                 onDelete: ReferentialAction.Restrict);
 

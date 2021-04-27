@@ -7,8 +7,8 @@ using PizzaBox.Domain.Models.Stores;
 namespace PizzaBox.Domain.Abstracts
 {
   //[XmlInclude(typeof(PUT MUH STORE HERE))]]
-  [XmlInclude(typeof(EastCoast))]
-  [XmlInclude(typeof(WestCoast))]
+  //[XmlInclude(typeof(EastCoast))]
+  //[XmlInclude(typeof(WestCoast))]
   public abstract class AStore : AModel
   {
     public string Name { get; set; } // does the same thing as public void GetName, SetName

@@ -22,8 +22,8 @@ namespace PizzaBox.Domain.Models.Pizzas
     /// </summary>
     public override void AddSize(Size size = null) //Size size = null
     {
-      //Size = size ?? new Size() { Name = "Medium" };
-      Size = size;
+      Size = size ?? new Size() { Name = "Medium" };
+      //Size = size;
     }
 
     /// <summary>
