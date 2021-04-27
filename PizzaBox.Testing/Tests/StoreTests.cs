@@ -31,13 +31,13 @@ namespace PizzaBox.Testing.Tests
       Assert.True(actual == "RealPizza");
       Assert.True(sut.ToString() == actual);
     } */
-    [Theory]
-    [MemberData(nameof(stores))]  //gets fed here from *
-    public void Test_StoreName(AStore store)  //we're really testing datatypes, not really comparisons
-    {
-      Assert.NotNull(store.Name);
-      Assert.Equal(store.Name, store.ToString());
-    }
+    /*     [Theory]
+        [MemberData(nameof(stores))]  //gets fed here from *
+        public void Test_StoreName(AStore store)  //we're really testing datatypes, not really comparisons
+        {
+          Assert.NotNull(store.Name);
+          Assert.Equal(store.Name, store.ToString());
+        } */
     /*
     [Theory]
     [InlineData("RealPizza")]

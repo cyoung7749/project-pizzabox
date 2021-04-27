@@ -6,14 +6,14 @@ namespace PizzaBox.Domain.Models.Pizzas
   /// <summary>
   /// 
   /// </summary>
-  public class NewYorkPizza : APizza
+  public class ChicagoPizza : APizza
   {
     /// <summary>
     /// 
     /// </summary>
     public override void AddCrust(Crust crust = null)
     {
-      Crust = crust ?? new Crust() { Name = "Thin" };
+      Crust = crust ?? new Crust() { Name = "Thick" };
       //Crust = new Crust();
       //Crust = crust;
     }
@@ -23,7 +23,7 @@ namespace PizzaBox.Domain.Models.Pizzas
     /// </summary>
     public override void AddSize(Size size = null) //Size size = null
     {
-      Size = size ?? new Size() { Name = "Large" };
+      Size = size ?? new Size() { Name = "Small" };
       //Size = size;
     }
 
@@ -35,8 +35,9 @@ namespace PizzaBox.Domain.Models.Pizzas
       Toppings = new List<Topping>()
       {
         new Topping() { Name = "Mozzarella" },
-        new Topping() { Name = "Marinara" },
-        new Topping() { Name = "Basil" }
+        new Topping() { Name = "Chunky Tomato" },
+        new Topping() { Name = "Sausage" },
+        new Topping() { Name = "Pepperoni" }
       };
     }
   }
