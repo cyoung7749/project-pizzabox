@@ -11,33 +11,29 @@ namespace PizzaBox.Domain.Models.Pizzas
     /// <summary>
     /// 
     /// </summary>
-    public override void AddCrust(Crust crust = null)
+    public override void AddCrust()
     {
-      Crust = crust ?? new Crust() { Name = "Thick", Price = 4.00M };
-      //Crust = new Crust();
+      // Crust = crust ?? new Crust() { Name = "Thick", Price = 4.00M };
+      Crust = new Crust();
       //Crust = crust;
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public override void AddSize(Size size = null) //Size size = null
+    public override void AddSize() //Size size = null
     {
-      Size = size ?? new Size() { Name = "Small", Price = 4.00M };
-      //Size = size;
+      //Size = size ?? new Size() { Name = "Small", Price = 4.00M };
+      Size = new Size();
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public override void AddToppings(params Topping[] toppings)
+    public override void AddToppings()
     {
       Toppings = new List<Topping>()
       {
-        new Topping() { Name = "Mozzarella" },
-        new Topping() { Name = "Chunky Tomato" },
-        new Topping() { Name = "Sausage" },
-        new Topping() { Name = "Pepperoni" }
       };
     }
   }

@@ -29,9 +29,9 @@ namespace PizzaBox.Domain.Abstracts
       AddToppings();
     }
 
-    public abstract void AddCrust(Crust crust = null);
-    public abstract void AddSize(Size size = null);
-    public abstract void AddToppings(params Topping[] toppings);
+    public abstract void AddCrust();
+    public abstract void AddSize();
+    public abstract void AddToppings();//params Topping[] toppings
 
     public override string ToString()
     {

@@ -40,26 +40,26 @@ namespace PizzaBox.Client
       // string input = sc.ReadLine();
       // int entry = int.Parse(input);
       // sc.WriteLine(stores[entry]);
-
       Run();
       //RunEF();
+      /*     private static void RunEF()
+    {
+      var context = new PizzaBoxContext();
+      var stores = context.Stores;
+      var customers = context.Customers;
+
+      foreach (var  item in stores)
+      {
+        System.Console.WriteLine(item);
+      }
+      foreach (var  item in customers)
+      {
+        System.Console.WriteLine(item);
+      }
+
+    } */
     }
-    /*     private static void RunEF()
-        {
-          var context = new PizzaBoxContext();
-          var stores = context.Stores;
-          var customers = context.Customers;
 
-          foreach (var  item in stores)
-          {
-            System.Console.WriteLine(item);
-          }
-          foreach (var  item in customers)
-          {
-            System.Console.WriteLine(item);
-          }
-
-        } */
     private static void Run()
     {
       // /*

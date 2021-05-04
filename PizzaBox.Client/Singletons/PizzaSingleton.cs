@@ -18,7 +18,7 @@ namespace PizzaBox.Client.Singletons
     private readonly PizzaBoxContext _context;
 
 
-    public List<APizza> Pizzas = new List<APizza> { new CustomPizza(), new NewYorkPizza(), new ChicagoPizza() };
+    public List<APizza> Pizzas { get; set; }
     public static PizzaSingleton Instance(PizzaBoxContext context)
     {
 
@@ -44,8 +44,6 @@ namespace PizzaBox.Client.Singletons
 
       //_context.Add(cp);
       //_context.SaveChanges();
-
-
       //Pizzas = _context.Pizzas.ToList();
     }
   }
